@@ -1,0 +1,1286 @@
+:root {
+  --ink: #213021;
+  --muted: #66705f;
+  --cream: #f7f1dd;
+  --paper: #fffaf0;
+  --porcelain: #fffdf7;
+  --green-900: #173e25;
+  --green-800: #23583a;
+  --green-700: #2f6d3c;
+  --green-500: #6fa53f;
+  --leaf: #9dc448;
+  --gold: #c9a24c;
+  --gold-soft: #efe1aa;
+  --honey: #d89b2f;
+  --rosewood: #8d4237;
+  --wood: #7a4c25;
+  --line: rgba(57, 81, 49, 0.18);
+  --shadow: 0 22px 60px rgba(24, 45, 26, 0.18);
+  --glow: 0 0 0 1px rgba(201, 162, 76, 0.18), 0 24px 70px rgba(24, 45, 26, 0.16);
+  --container: 1120px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    repeating-linear-gradient(90deg, rgba(122, 76, 37, 0.025) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(0deg, rgba(122, 76, 37, 0.018) 0 1px, transparent 1px 30px),
+    var(--cream);
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(35, 88, 58, 0.07), transparent 18%, transparent 82%, rgba(201, 162, 76, 0.08)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), transparent 28%);
+  content: "";
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  min-height: 68px;
+  padding: 0 clamp(18px, 4vw, 48px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent),
+    var(--green-800);
+  color: #fff;
+  border-bottom: 1px solid rgba(239, 225, 170, 0.28);
+  box-shadow: 0 8px 26px rgba(20, 45, 25, 0.2);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  width: 170px;
+  height: 42px;
+  overflow: hidden;
+}
+
+.brand img {
+  width: 170px;
+  height: auto;
+}
+
+.site-nav {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.86rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.site-nav a {
+  position: relative;
+  text-decoration: none;
+}
+
+.site-nav .nav-mobile-contact {
+  display: none;
+}
+
+.site-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  background: var(--honey);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 160ms ease;
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.header-cta,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 850;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.header-cta {
+  padding: 0 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent),
+    var(--leaf);
+  color: #173e25;
+  font-size: 0.88rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+  white-space: nowrap;
+}
+
+.button {
+  min-height: 46px;
+  padding: 0 22px;
+}
+
+.button:hover,
+.button:focus-visible,
+.header-cta:hover,
+.header-cta:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(25, 43, 22, 0.2);
+}
+
+.button-primary {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.34), transparent),
+    var(--honey);
+  color: #221609;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.button-green {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent),
+    var(--green-700);
+  color: #fff;
+}
+
+.button-outline {
+  border: 1px solid rgba(35, 88, 58, 0.26);
+  background: #fff;
+  color: var(--green-800);
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-toggle span:not(.sr-only) {
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.hero {
+  position: relative;
+  min-height: clamp(520px, 72vh, 690px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+    linear-gradient(90deg, rgba(18, 44, 25, 0.92) 0%, rgba(18, 44, 25, 0.72) 38%, rgba(18, 44, 25, 0.18) 72%),
+    url("assets/images/hero-kombucha-bioplastic.jpg") center right / cover;
+}
+
+.hero::before {
+  position: absolute;
+  inset: 26px;
+  border: 1px solid rgba(239, 225, 170, 0.26);
+  border-radius: 8px;
+  content: "";
+  pointer-events: none;
+}
+
+.hero::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 34px;
+  background: var(--cream);
+  content: "";
+  clip-path: polygon(0 45%, 100% 0, 100% 100%, 0 100%);
+}
+
+.hero-content {
+  position: relative;
+  width: min(560px, calc(100% - 36px));
+  margin-left: max(18px, calc((100vw - var(--container)) / 2));
+  padding: 80px 0 96px;
+  color: #fff;
+}
+
+.hero-content::before,
+.hero-content::after {
+  position: absolute;
+  left: -34px;
+  width: 1px;
+  height: 112px;
+  background: linear-gradient(180deg, transparent, var(--gold-soft), transparent);
+  content: "";
+}
+
+.hero-content::before {
+  top: 74px;
+}
+
+.hero-content::after {
+  bottom: 78px;
+}
+
+.hero-ornament {
+  display: block;
+  width: 118px;
+  height: 18px;
+  margin-bottom: 18px;
+  background:
+    linear-gradient(90deg, transparent, var(--gold-soft), transparent) center / 100% 1px no-repeat,
+    radial-gradient(circle, var(--gold-soft) 0 3px, transparent 4px) left center / 18px 18px no-repeat,
+    radial-gradient(circle, var(--gold-soft) 0 3px, transparent 4px) right center / 18px 18px no-repeat;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 12px;
+  color: var(--honey);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.hero h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.hero h1 {
+  max-width: 540px;
+  font-size: clamp(3.1rem, 7vw, 5.8rem);
+  line-height: 0.94;
+  letter-spacing: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  text-wrap: balance;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
+}
+
+.hero p:not(.eyebrow) {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1.08rem, 2vw, 1.28rem);
+  font-weight: 650;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.hero-badges span {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid rgba(239, 225, 170, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.09);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.83rem;
+  font-weight: 800;
+}
+
+.hero .button {
+  margin-top: 24px;
+}
+
+section {
+  scroll-margin-top: 88px;
+}
+
+.about-section,
+.process-section,
+.benefits-section,
+.impact-section,
+.prototype-section,
+.differential-section,
+.principles-section,
+.report-section,
+.contact-section {
+  padding: clamp(58px, 8vw, 96px) 0;
+}
+
+.about-section {
+  position: relative;
+  background:
+    linear-gradient(90deg, rgba(201, 162, 76, 0.08), transparent 22%, transparent 78%, rgba(35, 88, 58, 0.08)),
+    linear-gradient(180deg, rgba(255, 250, 240, 0.92), rgba(255, 250, 240, 0.96)),
+    url("assets/images/hero-kombucha-bioplastic.jpg") center 68% / cover;
+}
+
+.about-section::before,
+.principles-section::before,
+.report-section::before {
+  display: block;
+  width: min(280px, 58vw);
+  height: 22px;
+  margin: 0 auto clamp(32px, 5vw, 54px);
+  background:
+    linear-gradient(90deg, transparent, rgba(201, 162, 76, 0.72), transparent) center / 100% 1px no-repeat,
+    radial-gradient(circle, var(--gold) 0 4px, transparent 5px) center / 24px 24px no-repeat;
+  content: "";
+}
+
+.section-heading {
+  position: relative;
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.section-heading::after {
+  display: block;
+  width: 92px;
+  height: 2px;
+  margin-top: 20px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  content: "";
+}
+
+.section-heading.compact {
+  max-width: 880px;
+  text-align: left;
+}
+
+h2 {
+  color: var(--ink);
+  font-size: clamp(2rem, 4.8vw, 3.65rem);
+  line-height: 1.02;
+  letter-spacing: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+h3 {
+  color: var(--ink);
+  font-size: 1.15rem;
+  line-height: 1.18;
+  letter-spacing: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+}
+
+.section-heading p,
+.copy-block p,
+.report-grid p,
+.contact-grid p {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+
+.copy-block p + p {
+  margin-top: 16px;
+}
+
+.comparison-cards {
+  display: grid;
+  gap: 14px;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  margin: 0;
+}
+
+@media (min-width: 820px) {
+  .comparison-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.comparison-card {
+  position: relative;
+  padding: 22px;
+  border: 1px solid rgba(201, 162, 76, 0.28);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 250, 240, 0.62));
+}
+
+.comparison-card h3 {
+  margin-bottom: 14px;
+}
+
+.plastic-card h3 {
+  color: var(--rosewood);
+}
+
+.bio-card {
+  border-color: rgba(111, 165, 63, 0.34);
+  background: linear-gradient(180deg, rgba(247, 255, 238, 0.78), rgba(255, 250, 240, 0.66));
+}
+
+.bio-card h3 {
+  color: var(--green-800);
+}
+
+.project-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-list li {
+  position: relative;
+  padding-left: 26px;
+  color: var(--muted);
+}
+
+.project-list li::before {
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 3px solid var(--green-500);
+  border-radius: 50%;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.plastic-card .project-list li::before {
+  border-color: var(--rosewood);
+}
+
+.bio-card .project-list li::before {
+  border-color: var(--green-500);
+}
+
+.application-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.application-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 76, 0.34);
+  border-radius: 8px;
+  background: var(--porcelain);
+  box-shadow: var(--glow);
+}
+
+.application-card::after,
+.prototype-card button::after,
+.stats-card::after,
+.principles-image::after,
+.contact-links a::after {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(201, 162, 76, 0.18);
+  border-radius: 6px;
+  content: "";
+  pointer-events: none;
+}
+
+.application-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.application-card div {
+  padding: 18px;
+  text-align: center;
+}
+
+.application-card p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.center-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.process-section {
+  background:
+    linear-gradient(180deg, var(--porcelain), rgba(247, 241, 221, 0.92)),
+    var(--porcelain);
+}
+
+.process-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.process-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 430px;
+  display: grid;
+  align-content: end;
+  border: 1px solid rgba(201, 162, 76, 0.34);
+  border-radius: 8px;
+  background: var(--green-900);
+  box-shadow: var(--glow);
+}
+
+.process-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 28%, rgba(17, 38, 25, 0.9));
+  content: "";
+}
+
+.process-card::after {
+  position: absolute;
+  inset: 8px;
+  z-index: 2;
+  border: 1px solid rgba(239, 225, 170, 0.24);
+  border-radius: 6px;
+  content: "";
+  pointer-events: none;
+}
+
+.process-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.process-card div {
+  position: relative;
+  z-index: 3;
+  padding: 24px;
+  color: #fff;
+}
+
+.process-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(239, 225, 170, 0.45);
+  border-radius: 50%;
+  color: var(--gold-soft);
+  font-weight: 900;
+}
+
+.process-card h3 {
+  color: #fff;
+}
+
+.process-card p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.94rem;
+}
+
+.benefits-section {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 247, 0.5), transparent 46%),
+    linear-gradient(90deg, rgba(246, 239, 214, 0.94), rgba(255, 250, 240, 0.82)),
+    url("assets/images/hero-kombucha-bioplastic.jpg") center right / cover;
+}
+
+.benefit-heading h2 {
+  color: var(--green-800);
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  text-align: center;
+}
+
+.benefit-heading h2::after {
+  display: block;
+  width: min(320px, 70vw);
+  height: 1px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  content: "";
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.benefit-grid article {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-height: 160px;
+  padding: 26px 18px;
+  border-right: 1px solid rgba(82, 115, 57, 0.2);
+  text-align: center;
+}
+
+.benefit-grid article:last-child {
+  border-right: 0;
+}
+
+.benefit-icon {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: rgba(255, 253, 247, 0.36);
+  box-shadow: inset 0 0 0 5px rgba(111, 165, 63, 0.16);
+}
+
+.leaf-icon::after {
+  width: 32px;
+  height: 22px;
+  border-radius: 100% 0 100% 0;
+  background: var(--green-500);
+  content: "";
+  transform: rotate(-24deg);
+}
+
+.planet-icon::before,
+.planet-icon::after {
+  position: absolute;
+  content: "";
+}
+
+.planet-icon::before {
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--green-500);
+  border-radius: 50%;
+}
+
+.planet-icon::after {
+  width: 46px;
+  height: 12px;
+  border-top: 3px solid var(--green-500);
+  border-radius: 50%;
+  transform: rotate(-16deg);
+}
+
+.flask-icon::before {
+  width: 22px;
+  height: 34px;
+  border: 3px solid var(--green-500);
+  border-top: 0;
+  border-radius: 4px 4px 12px 12px;
+  content: "";
+  transform: translateY(4px);
+}
+
+.flask-icon::after {
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 14px;
+  border: 3px solid var(--green-500);
+  border-bottom: 0;
+  content: "";
+}
+
+.impact-section {
+  background:
+    linear-gradient(90deg, rgba(255, 253, 247, 0.95), rgba(255, 255, 255, 0.98)),
+    #fff;
+}
+
+.impact-grid,
+.differential-grid,
+.report-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: clamp(32px, 6vw, 76px);
+  align-items: center;
+}
+
+.impact-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(300px, 0.72fr);
+  align-items: start;
+}
+
+.stats-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 76, 0.32);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 250, 240, 0.92)),
+    var(--paper);
+  box-shadow: var(--glow);
+}
+
+.stats-card div {
+  display: grid;
+  gap: 6px;
+  padding: 26px;
+}
+
+.stats-card div + div {
+  border-top: 1px solid var(--line);
+}
+
+.stats-card strong {
+  color: var(--rosewood);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.stats-card span {
+  color: var(--muted);
+}
+
+.prototype-section {
+  background:
+    linear-gradient(180deg, rgba(247, 241, 221, 0.95), rgba(255, 253, 247, 0.7)),
+    var(--cream);
+}
+
+.prototype-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.prototype-card button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(201, 162, 76, 0.3);
+  border-radius: 8px;
+  background: var(--porcelain);
+  box-shadow: var(--glow);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.prototype-card button:hover,
+.prototype-card button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.prototype-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.prototype-card span {
+  display: block;
+  padding: 16px;
+  color: var(--green-800);
+  font-weight: 850;
+  border-top: 1px solid rgba(201, 162, 76, 0.18);
+}
+
+.differential-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05), transparent 35%),
+    var(--green-900);
+  color: #fff;
+}
+
+.differential-section::before,
+.contact-section::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(239, 225, 170, 0.035) 0 1px, transparent 1px 46px),
+    repeating-linear-gradient(0deg, rgba(239, 225, 170, 0.025) 0 1px, transparent 1px 38px);
+  content: "";
+}
+
+.differential-section > .container,
+.contact-section > .container {
+  position: relative;
+}
+
+.differential-section h2,
+.differential-section h3 {
+  color: #fff;
+}
+
+.differential-section .section-kicker {
+  color: var(--honey);
+}
+
+.differential-section .copy-block p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.principles-grid article {
+  min-height: 168px;
+  padding: 22px;
+  border: 1px solid rgba(239, 225, 170, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.principles-grid span {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--honey);
+  font-weight: 900;
+}
+
+.principles-grid p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.principles-section {
+  background:
+    linear-gradient(180deg, #fff, var(--porcelain));
+}
+
+.principles-image {
+  position: relative;
+  margin: 0;
+  padding: clamp(18px, 4vw, 34px);
+  border: 1px solid rgba(201, 162, 76, 0.32);
+  border-radius: 8px;
+  background: var(--porcelain);
+  box-shadow: var(--glow);
+}
+
+.principles-image img {
+  width: 100%;
+  height: auto;
+}
+
+.report-section {
+  background:
+    linear-gradient(90deg, rgba(201, 162, 76, 0.06), transparent 34%, rgba(47, 109, 60, 0.05)),
+    var(--paper);
+}
+
+.report-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.report-grid figure {
+  margin: 0;
+}
+
+.report-grid img {
+  width: 100%;
+  border: 1px solid rgba(201, 162, 76, 0.35);
+  border-radius: 8px;
+  box-shadow: var(--glow);
+}
+
+.report-grid figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.contact-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(25, 67, 37, 0.92), rgba(25, 67, 37, 0.96)),
+    url("assets/images/hero-kombucha-bioplastic.jpg") center bottom / cover;
+  color: #fff;
+}
+
+.contact-section h2 {
+  color: #fff;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.contact-section p,
+.contact-section .section-kicker {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.contact-links {
+  display: grid;
+  gap: 12px;
+  font-style: normal;
+}
+
+.contact-links a {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  min-height: 92px;
+  padding: 22px;
+  border: 1px solid rgba(239, 225, 170, 0.25);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.11);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 16px 42px rgba(7, 20, 11, 0.14);
+}
+
+.contact-links span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  font-weight: 750;
+}
+
+.contact-links strong {
+  color: #fff;
+  font-size: 1.1rem;
+  overflow-wrap: anywhere;
+}
+
+.site-footer {
+  padding: 30px 0;
+  background: #112619;
+  color: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid rgba(239, 225, 170, 0.18);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footer-inner img {
+  width: 170px;
+}
+
+.footer-inner p {
+  text-align: right;
+}
+
+.product-dialog {
+  width: min(900px, calc(100% - 32px));
+  padding: 0;
+  border: 1px solid rgba(201, 162, 76, 0.34);
+  border-radius: 8px;
+  background: var(--porcelain);
+  color: var(--ink);
+  box-shadow: 0 30px 90px rgba(18, 44, 25, 0.34), inset 0 0 0 8px rgba(201, 162, 76, 0.08);
+}
+
+.product-dialog::backdrop {
+  background: rgba(17, 38, 25, 0.7);
+}
+
+.dialog-grid {
+  display: grid;
+  grid-template-columns: 0.92fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 30px;
+}
+
+.dialog-grid img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.dialog-grid p:not(.section-kicker) {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+.dialog-grid ul {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding-left: 20px;
+  color: var(--muted);
+}
+
+.dialog-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--green-900);
+  cursor: pointer;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+@media (max-width: 940px) {
+  .site-header {
+    grid-template-columns: auto auto;
+  }
+
+  .brand {
+    width: 150px;
+  }
+
+  .brand img {
+    width: 150px;
+  }
+
+  .nav-toggle {
+    justify-self: end;
+    display: inline-flex;
+  }
+
+  .site-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .site-header.is-open .site-nav {
+    position: absolute;
+    top: calc(100% + 1px);
+    right: 14px;
+    left: 14px;
+    display: grid;
+    gap: 4px;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: var(--green-800);
+    box-shadow: var(--shadow);
+  }
+
+  .site-header.is-open .site-nav a {
+    padding: 10px 12px;
+  }
+
+  .site-header.is-open .site-nav .nav-mobile-contact {
+    display: block;
+  }
+
+  .hero {
+    min-height: 600px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 18%),
+      linear-gradient(180deg, rgba(18, 44, 25, 0.9) 0%, rgba(18, 44, 25, 0.68) 55%, rgba(18, 44, 25, 0.2) 100%),
+      url("assets/images/hero-kombucha-bioplastic.jpg") center right 36% / cover;
+  }
+
+  .hero-content {
+    padding-top: 78px;
+  }
+
+  .impact-grid,
+  .differential-grid,
+  .report-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-card {
+    position: relative;
+    top: auto;
+  }
+
+  .application-grid,
+  .benefit-grid,
+  .process-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .process-card {
+    min-height: 360px;
+  }
+
+  .benefit-grid article {
+    border-right: 0;
+    border-bottom: 1px solid rgba(82, 115, 57, 0.2);
+  }
+
+  .benefit-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .prototype-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dialog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: min(100% - 28px, var(--container));
+  }
+
+  .site-header {
+    min-height: 62px;
+    padding: 0 14px;
+  }
+
+  .brand,
+  .brand img {
+    width: 136px;
+  }
+
+  .hero {
+    min-height: 560px;
+  }
+
+  .hero::before {
+    inset: 12px;
+  }
+
+  .hero-content {
+    width: calc(100% - 28px);
+    margin: 0 auto;
+  }
+
+  .hero-content::before,
+  .hero-content::after {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.65rem, 13vw, 3.55rem);
+  }
+
+  .about-section,
+  .process-section,
+  .benefits-section,
+  .impact-section,
+  .prototype-section,
+  .differential-section,
+  .principles-section,
+  .report-section,
+  .contact-section {
+    padding: 54px 0;
+  }
+
+  .prototype-grid,
+  .principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-actions {
+    flex-direction: column;
+  }
+
+  .report-actions .button,
+  .hero .button {
+    width: 100%;
+  }
+
+  .footer-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-inner p {
+    text-align: left;
+  }
+
+  .dialog-grid {
+    padding: 18px;
+  }
+}
